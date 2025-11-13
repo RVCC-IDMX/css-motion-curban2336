@@ -26,6 +26,14 @@
   /* Card dimensions (for Section 3) */
   --card-width: 400px;
   --card-height: 500px;
+
+  /* Color palette */
+  --bg: hsl(32, 100%, 81%);
+  --bg-dark: hsl(32, 83%, 65%);
+  --button: hsl(200, 100%, 50%);
+  --text: hsl(0, 0%, 20%);
+  --text-header: hsl(113, 100%, 15%);
+  --header-border: hsl(197, 41%, 36%);
 }
 
 /* ============================================
@@ -44,8 +52,9 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-
-  /* You'll add: background color, text color, font-family */
+  background-color:var(--bg);
+  color: var(--text);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 /* ============================================
@@ -55,17 +64,24 @@ body {
 header {
   padding: var(--space-xl) var(--container-padding);
   text-align: center;
-
-  /* You'll add: background, border, or other styling */
+  border: 6px var(--header-border);
+  border-style: ridge;
+  box-shadow: 0px 10px 30px black;
+  background-color: var(--bg-dark);
 }
 
 header h1 {
-  /* You'll add: font-size, font-weight, color, margin */
+  font-size: var(--space-xl);
+  font-weight: bold;
+  color: var(--text-header);
+  margin: 0.8rem;
 }
 
 header .subtitle {
   margin-top: var(--space-sm);
-  /* You'll add: font-size, color, font-style */
+  font-size: var(--space-md);
+  font-weight: bold;
+  margin: 0.6rem;
 }
 
 /* ============================================
@@ -94,13 +110,19 @@ main {
   display: flex;
   flex-direction: column;
   gap: var(--space-lg);
-  /* Temporary outline for development */
-  outline: 1px solid black;
-  /* You'll add: background, padding, border, border-radius, shadow */
+  border: 6px ridge var(--header-border);
+  padding: var(--space-lg);
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  background-color: var(--bg-dark);
+  box-shadow: 5px 10px 20px black;
 }
 
 .motion-section h2 {
-  /* You'll add: font-size, font-weight, color, text-align */
+  text-align: center;
+  font-size: var(--space-lg);
+  font-weight: bold;
+  color: var(--text-header);
 }
 
 /* ============================================
@@ -113,8 +135,7 @@ main {
   justify-content: center;
   align-items: center;
   padding: var(--space-xl);
-
-  /* You'll add: background or border to define the demo area */
+  border: 3px solid var(--header-border);
 }
 
 .interactive-element {
@@ -122,6 +143,13 @@ main {
   border: none;
   cursor: pointer;
   padding: var(--space-md) var(--space-lg);
+  background-color: var(--button);
+  font-size: var(--space-sm);
+  color: var(--text);
+  font-weight: bold;
+
+  transform: translateY(0);
+  transition: transform 250ms ease-in-out;
 
   /* You'll add:
      - All styling (colors, fonts, borders, etc.)
@@ -129,6 +157,17 @@ main {
      - Hover and focus states with motion
      - prefers-reduced-motion alternative
   */
+}
+
+.interactive-element:hover, .interactive-element:focus {
+  transform: translateY(-2px);
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button-feedback {
+    transition: none;
+  }
 }
 
 /* ============================================
