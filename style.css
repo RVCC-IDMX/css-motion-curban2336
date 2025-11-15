@@ -165,6 +165,10 @@ main {
   .timing-button {
     transition: none;
   }
+
+  .card-inner {
+    transition: none;
+  }
 }
 
 /* ============================================
@@ -228,7 +232,8 @@ main {
   justify-content: center;
   align-items: center;
   color: var(--text-header);
-  font-size: var(--space-md;
+  font-size: var(--space-md);
+  text-align: center;
 }
 
 /* ============================================
@@ -242,7 +247,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: var(--space-xl);
+  padding: var(--space-md);
 
   /* You'll add: background, perspective value for 3D effect */
 }
@@ -254,9 +259,8 @@ main {
   height: var(--card-height);
   position: relative;
 
-  /* This enables 3D transforms for child elements */
-  /* You'll add: transform-style: preserve-3d */
-  /* You'll add: transition for the rotation */
+  transform-style: preserve-3d;
+  transition: transform 600ms ease-in-out;
 }
 
 /* Both card faces share these properties */
@@ -267,7 +271,7 @@ main {
   height: 100%;
 
   /* Prevent back face from showing through */
-  /* You'll add: backface-visibility: hidden */
+  backface-visibility: hidden;
 
   /* Layout for content inside face */
   display: flex;
@@ -277,27 +281,31 @@ main {
   padding: var(--space-lg);
   gap: var(--space-md);
 
-  /* You'll add: background, border, border-radius, shadow, colors */
+  background-color: var(--bg);
+  border: 3px solid var(--header-border);
+  border-radius: 1rem;
+  text-align: center;
+  transform-style: preserve-3d;
 }
 
-/* Front face - visible by default */
-.card-front {
+/* card face headers */
+.card-front h3, .card-back h3{
   /* You'll add: any front-specific styling */
+  font-size: var(--space-lg);
+  color: var(--text-header);
 }
 
 /* Back face - rotated 180 degrees */
 .card-back {
-  /* You'll add: transform: rotateY(180deg) to flip this face */
-  /* You'll add: any back-specific styling */
+  transform: rotateY(180deg);
+  background-color: var(--button);
 }
 
 /* Hover/focus state for card */
-/* You'll add a rule like:
    .card-container:hover .card-inner,
    .card-container:focus-within .card-inner {
      transform: rotateY(180deg);
    }
-*/
 
 /* ============================================
    SECTION 4: ACCESSIBILITY & REFLECTION
