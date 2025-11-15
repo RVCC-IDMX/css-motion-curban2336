@@ -30,9 +30,10 @@
   /* Color palette */
   --bg: hsl(32, 100%, 81%);
   --bg-dark: hsl(32, 83%, 65%);
-  --button: hsl(200, 100%, 50%);
+  --button: hsl(113, 100%, 18%);
   --text: hsl(0, 0%, 20%);
   --text-header: hsl(113, 100%, 15%);
+  --text-button: hsl(0, 0%, 100%);
   --header-border: hsl(197, 41%, 36%);
 }
 
@@ -64,8 +65,7 @@ body {
 header {
   padding: var(--space-xl) var(--container-padding);
   text-align: center;
-  border: 6px var(--header-border);
-  border-style: ridge;
+  border-bottom: 6px ridge var(--header-border);
   box-shadow: 0px 10px 30px black;
   background-color: var(--bg-dark);
 }
@@ -145,7 +145,7 @@ main {
   padding: var(--space-md) var(--space-lg);
   background-color: var(--button);
   font-size: var(--space-sm);
-  color: var(--text);
+  color: var(--text-button);
   font-weight: bold;
 
   transform: translateY(0);
@@ -155,20 +155,6 @@ main {
 .interactive-element:hover, .interactive-element:focus {
   transform: translateY(-2px);
 
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .interactive-element {
-    transition: none;
-  }
-
-  .timing-button {
-    transition: none;
-  }
-
-  .card-inner {
-    transition: none;
-  }
 }
 
 /* ============================================
@@ -204,7 +190,7 @@ main {
 
   background-color: var(--button);
   font-size: var(--space-sm);
-  color: var(--text);
+  color: var(--text-button);
   font-weight: bold;
 
   transform: scale(1);
@@ -280,6 +266,7 @@ main {
   align-items: center;
   padding: var(--space-lg);
   gap: var(--space-md);
+  line-height: 1.5;
 
   background-color: var(--bg);
   border: 3px solid var(--header-border);
@@ -292,6 +279,9 @@ main {
 .card-front h3, .card-back h3{
   /* You'll add: any front-specific styling */
   font-size: var(--space-lg);
+}
+
+.card-front h3{
   color: var(--text-header);
 }
 
@@ -299,6 +289,7 @@ main {
 .card-back {
   transform: rotateY(180deg);
   background-color: var(--button);
+  color: var(--text-button);
 }
 
 /* Hover/focus state for card */
@@ -323,12 +314,19 @@ main {
 
 .accessibility-note h3,
 .reflection-text h3 {
-  /* You'll add: font-size, font-weight, color */
+  font-size: var(--space-lg);
+  font-weight: bold;
+  color: var(--text);
+  font-style: italic;
+  text-align: center;
 }
 
 .accessibility-note p,
 .reflection-text p {
-  /* You'll add: font-size, line-height, color */
+  font-size: var(--space-sm);
+  line-height: 1.5;
+  color: var(--text);
+  text-align: center;
 }
 
 /* ============================================
@@ -337,7 +335,9 @@ main {
    ============================================ */
 .motion-caption {
   text-align: center;
-  /* You'll add: font-size, color, line-height, font-style */
+  line-height: 1.5;
+  font-size: var(--space-sm);
+  color: var(--text);
 }
 
 /* ============================================
@@ -349,11 +349,13 @@ footer {
   margin-top: auto;
   text-align: center;
 
-  /* You'll add: background, border-top, color */
+  background-color: var(--bg-dark);
+  border-top: 6px ridge var(--header-border);
 }
 
 footer p {
-  /* You'll add: font-size, color */
+  font-size: var(--space-sm);
+  color: var(--text);
 }
 
 /* ============================================
@@ -387,6 +389,26 @@ footer p {
   :root {
     --card-width: 320px;
     --card-height: 400px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .interactive-element {
+    transition: none;
+  }
+
+  .timing-button {
+    transition: none;
+  }
+
+  .card-inner {
+    transition: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
   }
 }
 
